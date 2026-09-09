@@ -1,0 +1,50 @@
+--CREATE DATABASE [AWS_SNOWFLAKE_POWERBI PROJECT]
+
+--USE [AWS_SNOWFLAKE_POWERBI PROJECT]
+
+--SELECT * FROM [dbo].[data_season]
+
+--SELECT *
+--INTO Agriculture
+--FROM [dbo].[data_season];
+
+--select * from Agriculture
+
+
+update agriculture
+set rainfall = 1.1*rainfall;
+
+update agriculture
+set area = 0.9*area;
+
+select * from agriculture;
+
+
+//Year 2004 & 2009 - Y1
+//Year 2010 & 2015 - Y2
+//Year 2016 & 2019 - Y3
+
+ALTER TABLE Agriculture
+add Year_Group VARCHAR(MAX);
+
+select * from agriculture;
+
+//1st update
+update agriculture
+set year_group = 'Y1'
+where year >=2004 and year<=2009
+
+//2nd update
+update agriculture
+set year_group = 'Y2'
+where year >=2010 and year<=2015
+
+
+//3rd Update
+update agriculture
+set year_group = 'Y3'
+where year >=2016 and year<=2019
+
+
+select * from agriculture;
+
